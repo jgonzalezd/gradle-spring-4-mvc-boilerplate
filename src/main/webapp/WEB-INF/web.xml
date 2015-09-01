@@ -1,0 +1,40 @@
+<web-app  id="WebApp_ID" version="3.1" >
+
+    <display-name>Gradle + Spring MVC Hello World + XML</display-name>
+    <description>Spring MVC web application</description>
+
+    <!-- For web context -->
+    <servlet>
+        <servlet-name>hello-dispatcher</servlet-name>
+        <servlet-class>
+            org.springframework.web.servlet.DispatcherServlet
+        </servlet-class>
+        <init-param>
+            <param-name>contextConfigLocation</param-name>
+            <param-value>/WEB-INF/spring-mvc-config.xml</param-value>
+        </init-param>
+        <load-on-startup>1</load-on-startup>
+    </servlet>
+
+    <servlet-mapping>
+        <servlet-name>hello-dispatcher</servlet-name>
+        <url-pattern>/</url-pattern>
+    </servlet-mapping>
+
+    <!--<context-param>
+        <param-name>log4jConfigLocation</param-name>
+        <param-value>classpath:log4j.properties</param-value>
+    </context-param>-->
+
+    <!-- For root context -->
+    <listener>
+        <!--<listener-class>org.springframework.web.util.Log4jConfigListener</listener-class>   << this breaks the app -->
+        <listener-class>org.springframework.web.context.ContextLoaderListener</listener-class>
+    </listener>
+
+    <context-param>
+        <param-name>contextConfigLocation</param-name>
+        <param-value>/WEB-INF/spring-core-config.xml</param-value>
+    </context-param>
+
+</web-app>
